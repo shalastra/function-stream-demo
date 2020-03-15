@@ -2,12 +2,12 @@ package dev.shalastra.functionstreamdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
-public class FunctionStreamDemoApplication {
+public class DemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FunctionStreamDemoApplication.class, args);
+        SpringApplication.run(DemoApplication.class, args);
     }
-
 }

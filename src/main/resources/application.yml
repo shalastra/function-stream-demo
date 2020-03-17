@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    stream:
+      kafka.streams.binder:
+        configuration.commit.interval.ms: 1000
+      bindings:
+        process-out-0:
+          destination: product-counts
+        process-in-0:
+          destination: products
+  application.name: function-stream-demo

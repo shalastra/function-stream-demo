@@ -1,0 +1,1 @@
+docker exec -it kafka-prod-tracker /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --key-deserializer org.apache.kafka.common.serialization.IntegerDeserializer --property print.key=true --topic product-counts

@@ -1,10 +1,13 @@
 package dev.shalastra.functionstreamdemo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.experimental.Accessors;
 
-@Getter
-@Setter
+@Accessors(fluent = true)
+@AllArgsConstructor
 public class Product {
-    private Integer id;
+
+    @Getter
+    private final Integer id;
 }

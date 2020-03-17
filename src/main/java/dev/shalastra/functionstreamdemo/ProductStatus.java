@@ -2,17 +2,17 @@ package dev.shalastra.functionstreamdemo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.time.LocalTime;
 
 @Getter
-@Setter
+@Accessors(fluent = true)
 @AllArgsConstructor
 public class ProductStatus {
 
-    private Integer id;
-    private long count;
-    private LocalTime windowStart;
-    private LocalTime windowEnd;
+    private final Integer id;
+    private final long count;
+    private final LocalTime windowStart;
+    private final LocalTime windowEnd;
 }

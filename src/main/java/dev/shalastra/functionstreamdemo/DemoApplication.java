@@ -36,19 +36,19 @@ public class DemoApplication {
     @Bean
     public Function<KStream<Object, Product>, KStream<Integer, ProductStatus>> process() {
         return input -> input
-                .filter((key, product) -> productIds().contains(product.getId()))
+                .filter((key, product) -> productIds().contains(product.id()))
                 .map((key, value) -> new KeyValue<>(value, value))
                 .groupByKey(Grouped.with(new JsonSerde<>(Product.class), new JsonSerde<>(Product.class)))
                 .windowedBy(TimeWindows.of(Duration.ofSeconds(60)))
                 .count(Materialized.as("product-counts"))
                 .toStream()
-                .map((key, value) -> new KeyValue<>(key.key().getId(), new ProductStatus(key.key().getId(),
+                .map((key, value) -> new KeyValue<>(key.key().id(), new ProductStatus(key.key().id(),
                         value, Instant.ofEpochMilli(key.window().start()).atZone(ZoneId.systemDefault()).toLocalTime(),
                         Instant.ofEpochMilli(key.window().end()).atZone(ZoneId.systemDefault()).toLocalTime())));
     }
 
     private Set<Integer> productIds() {
-        return StringUtils.commaDelimitedListToSet(productTrackerProperties.getProductIds())
+        return StringUtils.commaDelimitedListToSet(productTrackerProperties.productIds())
                 .stream().map(Integer::parseInt).collect(Collectors.toSet());
     }
 }
